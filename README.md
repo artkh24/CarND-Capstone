@@ -150,13 +150,15 @@ Traffic light detection node performes 2 tasks:
 
 2. Used camera image to classify traffic light and traffic light color
 To clasify the traffic lights [Tensorflow Object Detection API](https://github.com/tensorflow/models/tree/master/research/object_detection).
-was used
+was used.
 As a pretrained detection model tensorflow [ssd_mobilenet_v1_2017_11_17'](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/detection_model_zoo.md) 
-model was used trained on [Coco dataset](http://cocodataset.org/#home)
+model was used trained on [Coco dataset](http://cocodataset.org/#home).
 
 The tensorflow object detection api classifies traffic light then after Gausian bluring the openCV minMaxLoc method were used
 to define the most bright pixel and then 'brighter_region' method were used in 'tl_classifier.py' to determine the if its red, yellow or green.
 Here we are assuming that traffic light has vertical position and from top to bottom first cames red then yellow and then green
+To speed up classification process every fifth image was taken for classification
+There is also an opportunity in to save generated images with predictions in folder /ros/src/lt_detector/data/light_images
 
 The following are some example of traffic light classification and color detection
 
